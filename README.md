@@ -1,6 +1,6 @@
-## Material UI Portfolio
+## Tanner Simpkins Portfolio
 
-A portfolio single page application using React and Material UI
+A portfolio page application built using ReactJs and Material UI
 
 #### To change into client directory
 
