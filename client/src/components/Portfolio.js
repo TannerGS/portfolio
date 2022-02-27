@@ -14,10 +14,10 @@ import Particles from "./Particles";
 
 import project1 from "../images/cineview.png";
 import project2 from "../images/picture-perfect.png";
-import project3 from "../images/javascript-fullstack.jpg";
-import project4 from "../images/mern-stack.jpg";
-import project5 from "../images/react-redux.jpg";
-import project6 from "../images/react.png";
+import project3 from "../images/krypt.png";
+import project4 from "../images/nytelock.png";
+import project5 from "../images/alien-invasion.png";
+import project6 from "../images/sudoku-solver.png";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -63,17 +63,17 @@ const handleSubmit = (name) => {
     case 'Picture Perfect':
       projectLink = 'https://github.com/TannerGS/picture_perfect';
       break;
-    case 'Project 3':
-      projectLink = 'https://www.google.com/';
+    case 'Krypt':
+      projectLink = 'https://github.com/TannerGS/krypt-web3.0';
       break;
-    case 'Project 4':
-      projectLink = 'https://www.google.com/';
+    case 'Nytelock':
+      projectLink = 'https://github.com/TannerGS/nytelock_recreation';
       break;
-    case 'Project 5':
-      projectLink = 'https://www.google.com/';
+    case 'Alien Invasion':
+      projectLink = 'https://github.com/TannerGS/Alien-Invasion';
       break;
-    case 'Project 6':
-      projectLink = 'https://www.google.com/';
+    case 'Sudoku Solver':
+      projectLink = 'https://github.com/TannerGS/sudoku_solver';
       break;
     default:
       projectLink = 'https://www.google.com/';
@@ -90,17 +90,17 @@ const handleSubmit2 = (name) => {
     case 'Picture Perfect':
       websiteLink = 'https://www.pictureperfectsharing.com/';
       break;
-    case 'Project 3':
-      websiteLink = 'https://www.google.com/';
+    case 'Krypt':
+      websiteLink = 'https://github.com/TannerGS/krypt-web3.0';
       break;
-    case 'Project 4':
-      websiteLink = 'https://www.google.com/';
+    case 'Nytelock':
+      websiteLink = 'https://github.com/TannerGS/nytelock_recreation';
       break;
-    case 'Project 5':
-      websiteLink = 'https://www.google.com/';
+    case 'Alien Invasion':
+      websiteLink = 'https://github.com/TannerGS/Alien-Invasion';
       break;
-    case 'Project 6':
-      websiteLink = 'https://www.google.com/';
+    case 'Sudoku Solver':
+      websiteLink = 'https://github.com/TannerGS/sudoku_solver';
       break;
     default:
       websiteLink = 'https://www.google.com/';
@@ -114,31 +114,37 @@ const projects = [
     name: "CineView",
     description: `A TV Show database website for searching for TV Show information. Built using ReactJs, MaterialUi, and the TVMaze API. Deployed with AWS Amplify.`,
     image: project1,
+    webLink: true,
   },
   {
     name: "Picture Perfect",
     description: `A social media website for sharing pictures. Built using ReactJs, Sanity.io, and TailwindCss. Deployed with Netlify.`,
     image: project2,
+    webLink: true,
   },
   {
-    name: "Project 3",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    name: "Krypt",
+    description: `A web 3.0 app for sending/receiving cryptocurrencies. Built using ReactJs, TailwindCss, Vite, and hardhat.`,
     image: project3,
+    webLink: false,
   },
   {
-    name: "Project 4",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    name: "Nytelock",
+    description: `A recreation of a portion of the nytelock website using ReactJs.`,
     image: project4,
+    webLink: false,
   },
   {
-    name: "Project 5",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    name: "Alien Invasion",
+    description: `An alien invasion game built using python and pygame.`,
     image: project5,
+    webLink: false,
   },
   {
-    name: "Project 6",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    name: "Sudoku Solver",
+    description: `A program written in python using a backtracking algorithm to solve a given sudoku board.`,
     image: project6,
+    webLink: false,
   },
 ];
 
@@ -171,9 +177,11 @@ const Portfolio = () => {
                 <Button onClick={() => handleSubmit(project.name)} size="small">
                   Github
                 </Button>
-                <Button onClick={() => handleSubmit2(project.name)} size="small">
-                  Website
+                {project.webLink && (
+                  <Button onClick={() => handleSubmit2(project.name)} size="small">
+                    Website
                 </Button>
+                )}
               </CardActions>
             </Card>
           </Grid>
