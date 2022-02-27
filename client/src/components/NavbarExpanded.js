@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import MenuIcon from '@material-ui/icons/Menu';
-import AssignmentInd from "@material-ui/icons/AssignmentInd";
-import Home from "@material-ui/icons/Home";
-import Apps from "@material-ui/icons/Apps";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Footer from "../components/Footer";
-import { withThemeCreator } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -105,7 +95,7 @@ const NavbarExpanded = () => {
           <h4 className={classes.textLink, classes.textPlain} >Portfolio</h4>
         </Link>
         <Link to="/contact" className={classes.text} >
-          <h4 className={classes.textLink} className={classes.textPlain} >Contact Me</h4>
+          <h4 className={classes.textLink, classes.textPlain} >Contact Me</h4>
         </Link>
       </span>
       <span className={classes.footer}>
