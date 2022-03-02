@@ -19,17 +19,6 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
-/*
-transporter.set('oauth2_provision_cb', (user, renew, callback)=>{
-  let accessToken = userTokens[user];
-  if(!accessToken){
-      return callback(new Error('Unknown user'));
-  }else{
-      return callback(null, accessToken);
-  }
-});
-*/
-
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
