@@ -8,6 +8,12 @@ A portfolio web application built using ReactJs and Material UI
 cd client
 ```
 
+#### To change into server directory
+
+```
+cd server
+```
+
 #### To install dependency
 
 ```
