@@ -2,19 +2,7 @@
 
 A portfolio web application built using ReactJs and Material UI
 
-#### To change into client directory
-
-```
-cd client
-```
-
-#### To change into server directory
-
-```
-cd server
-```
-
-#### To install dependency
+#### To install dependencies
 
 ```
 npm install

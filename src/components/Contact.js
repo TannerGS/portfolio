@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
@@ -68,69 +68,79 @@ const InputField = withStyles({
 })(TextField);
 
 const Contact = () => {
+  const form = useRef();
   const classes = useStyles();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
   const [messageSent, setMessageSent] = useState(false);
+
+  const [toSend, setToSend] = useState({
+    from_name: '',
+    to_name: 'tannersimpkins@gmail.com',
+    message: '',
+    email: '',
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    axios.post('/send', {
-      name: name,
-      email: email,
-      message: message
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    emailjs.init("1gwgOSnksMX8sgb-P");
+    emailjs.sendForm(
+      'service_f27q8va',
+      'template_agxbvvk',
+      form.current,
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
 
-    setName('');
-    setEmail('');
-    setMessage('');
+    
     setMessageSent(true);
     setTimeout(() => {
       window.location.reload();
     }, 2000);
   }
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
   
   return (
     <Box component="div" className={classes.contactContainer}>
       <Particles />
       <Grid container justify="center">
         {(!messageSent) ? (
-          <Box component="form" className={classes.form}>
+          <Box component="form" ref={form} className={classes.form}>
             <Typography variant="h5" className={classes.heading}>
               Hire or Contact me...
             </Typography>
             <InputField
               fullWidth={true}
               label="Name"
+              name="from_name"
               variant="outlined"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              value={toSend.from_name}
+              onChange={handleChange}
               inputProps={{ className: classes.input }}
             />
             <InputField
               fullWidth={true}
               label="Email"
+              name="email"
               variant="outlined"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={toSend.email}
+              onChange={handleChange}
               inputProps={{ className: classes.input }}
               className={classes.field}
             />
             <InputField
               fullWidth={true}
               label="Message"
+              name="message"
               variant="outlined"
-              value={message}
-              onChange={e => setMessage(e.target.value)}
+              value={toSend.message}
+              onChange={handleChange}
               multiline
               rows={4}
               inputProps={{ className: classes.input }}
