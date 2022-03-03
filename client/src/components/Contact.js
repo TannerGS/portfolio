@@ -93,10 +93,6 @@ const Contact = () => {
     setName('');
     setEmail('');
     setMessage('');
-    setMessageSent(true);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
   }
   
   return (
