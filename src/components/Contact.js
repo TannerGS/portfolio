@@ -10,6 +10,8 @@ import Send from "@material-ui/icons/Send";
 
 import Particles from "./Particles";
 
+require('dotenv').config()
+
 const useStyles = makeStyles((theme) => ({
   contactContainer: {
     background: "#2E2E2E",
@@ -82,10 +84,10 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.init("1gwgOSnksMX8sgb-P");
+    emailjs.init(process.env.REACT_APP_USER_ID);
     emailjs.sendForm(
-      'service_f27q8va',
-      'template_agxbvvk',
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
       form.current,
     )
       .then((response) => {
